@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require 'grape'
 
-module Api
+module API
   class Accesses < Grape::API
     resource 'accesses' do
       get do
@@ -17,6 +19,5 @@ module Api
         end
       end
     end
-
   end
 end

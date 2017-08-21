@@ -1,27 +1,28 @@
 source 'https://rubygems.org'
 
-gem 'activerecord'
-gem 'active_record_migrations'
-gem 'foreigner'
-gem 'puma'
-gem 'grape'
-gem 'pg'
-gem 'hashie'
+ruby '2.4.1'
+
+gem 'activerecord',             '5.1.3'
+gem 'active_record_migrations', '5.0.2.1'
+gem 'puma',                     '3.10.0'
+gem 'grape',                    '1.0.0'
+gem 'pg',                       '0.21.0'
 
 # SSL
-gem 'rack-ssl-enforcer'
+gem 'rack-ssl-enforcer', '0.2.9'
 
-group :development, :test do
-  gem 'rb-readline'
-  gem 'rspec'
-  gem 'rspec-its'
-  gem 'pry', '~> 0.10.1'
+group :development do
+  gem 'rubocop', '0.49.1', require: false
+  gem 'rufo',    '0.1.0',  require: false
 end
 
 group :test do
-  gem 'factory_girl'
-  gem 'database_cleaner'
+  gem 'rspec',            '3.6.0'
+  gem 'factory_girl',     '4.8.0'
+  gem 'database_cleaner', '1.6.1'
 end
 
-group :production do
+group :development, :test do
+  gem 'pry',         '0.10.4'
+  gem 'rb-readline', '0.5.5'
 end

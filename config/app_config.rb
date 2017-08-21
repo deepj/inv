@@ -1,10 +1,15 @@
-require 'hashie/mash'
+# frozen_string_literal: true
+
 require 'yaml'
 require 'erb'
 
-env = ENV['RACK_ENV'] || 'development'
+require 'lib/symbolize_keys'
 
-main_config_text = ERB.new(File.read(File.join( File.dirname(__FILE__), 'application.yml' ))).result
-main_config = YAML.load(main_config_text)[env]
+environment = ENV.fetch('RACK_ENV', 'development')
 
-APP_CONFIG = Hashie::Mash.new(main_config)
+main_config_yaml = File.read(File.join(__dir__, 'application.yml'))
+main_config = YAML.load(ERB.new(main_config_yaml).result)[environment] || {}
+
+abort('The configuration could not be loaded or missing!') if main_config.empty?
+
+APP_CONFIG = SymbolizeKeys.symbolize(main_config)

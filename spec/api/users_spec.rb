@@ -1,14 +1,11 @@
+# frozen_string_literal: true
+
 require 'app/users'
 
-describe Api::Users do
-  describe 'GET /user' do
+RSpec.describe API::Users, type: :request do
+  describe 'GET /users' do
     before do
-      get '/user'
+      get '/users'
     end
-
-    it {
-      # Your code here
-    }
   end
 end
-

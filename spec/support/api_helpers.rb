@@ -1,16 +1,17 @@
+# frozen_string_literal: true
+
 require 'app/main'
 
-module ApiHelpers
+module APIHelpers
   def app
-    Api::Main
+    API::Main
   end
 
-  def set_auth_header(token)
-    auth = "Token #{token}"
-    header 'Authentication', auth
+  def use_auth_header(token)
+    header 'Authentication', "Token #{token}"
   end
 
   def json_response
-    @json ||= Hashie::Mash.new(JSON.parse(last_response.body))
+    @_json_response ||= JSON.parse(last_response.body, symbolize_names: true)
   end
 end

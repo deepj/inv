@@ -1,27 +1,21 @@
-desc "Runs a console with the application loaded"
-task :console do
-  $:.push(File.join(File.dirname(__FILE__), '../../'))
+# frozen_string_literal: true
 
-  require_relative '../../environment'
+desc 'Runs a console with the application loaded'
+task :console do
+  $LOAD_PATH.push(File.join(__dir__, '..', '..'))
+
   require 'irb'
   require 'irb/completion'
-
-  loadDependency = lambda { |location|
-    Dir["app/#{location}/**/*.rb"].each {|file|
-      require file
-    }
-  }
-
+  require 'environment'
   require 'app/main'
 
-  loadDependency.call(:api)
-  loadDependency.call(:models)
+  load_dependency = ->(location) { Dir["app/#{location}/**/*.rb"].each(&method(:require)) }
+
+  load_dependency[:api]
+  load_dependency[:models]
 
   ActiveRecord::Base.logger = Logger.new(STDOUT)
 
   ARGV.clear
   IRB.start
 end
-
-
-

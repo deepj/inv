@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require 'grape'
 
-module Api
+module API
   class Users < Grape::API
     get :user do
       # Your code here

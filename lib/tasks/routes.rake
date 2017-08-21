@@ -1,11 +1,13 @@
-desc "Prints routes"
+# frozen_string_literal: true
+
+desc 'Prints routes'
 task :routes do
-  require_relative '../../environment'
+  $LOAD_PATH.push(File.join(__dir__, '..', '..'))
 
-  require 'main'
+  require 'environment'
+  require 'app/main'
 
-  Api::Main.routes.each do |route|
+  API::Main.routes.each do |route|
     puts "version=#{route.options[:version]}, method=#{route.options[:method]}, path=#{route.pattern.origin}"
   end
 end
-

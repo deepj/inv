@@ -32,9 +32,9 @@ docker-compose run api rake db:migrate RACK_ENV=test
 
 Structuring and naming your commits well might help you succeed! We place great value on re-usability and readability of code. "First make it work, then make it right."
 
-During the development, please adhere to the industry standards to the best of your ability. Do not let your application crash with `500 Internal Server Error` statuses. Instead take care of all the edge cases and return appropriate status codes and response bodies. For example do not let your app crash if I use a non-existing id. Simply return a `404 Not Found` with an error message explaining what happened. All operations must be scoped to the current user of the api (if applicable). Make sure all the common use-cases are covered in specs. Make sure the tests are reasonably fast. Make sure the code is easy to read and speaks for itself.
+During the development, please adhere to the industry standards to the best of your ability. Do not let your application crash with `500 Internal Server Error` statuses. Instead take care of all the edge cases and return appropriate status codes and response bodies. For example do not let your app crash if I use a non-existing id. Simply return a `404 Not Found` with an error message explaining what happened. All operations must be scoped to the current user of the API (if applicable). Make sure all the common use-cases are covered in specs. Make sure the tests are reasonably fast. Make sure the code is easy to read and speaks for itself.
 
-Note that the description below should give you a set of rules according to which the api should behave but it does not mention some details on purpose. Feel free to improve the concept if you know how and show some initiative. It will be appreciated. Most of all, we appreciate **common sense**.
+Note that the description below should give you a set of rules according to which the API should behave but it does not mention some details on purpose. Feel free to improve the concept if you know how and show some initiative. It will be appreciated. Most of all, we appreciate **common sense**.
 
 You will find some pre-filled boilerplate code in the `app` and `spec` directories. There's also some helper methods in `spec/support` which should make writing tests easier.
 
@@ -44,12 +44,12 @@ If you run into problems, do not hesitate to let us know. Teamwork is important 
 
 Your task is to model 2 types of entities and their relationship. The `user` and the `access`. A user can have multiple accesses at the same time. One access always belongs to a single user. An access has a numeric `level` which is an integer value greater than zero. Additionally it must always have a `starts_at` timestamp attribute and it may have an `ends_at` attribute. A user will have a static token generated at the time he is created. This token must be unique.
 
-You must build a JSON api on top of this model layer.
+You must build a JSON API on top of this model layer.
 
 
-### Users Api
+### Users API
 
-Let's begin with the users api. Presuming your app runs on localhost:3000 it should behave like this:
+Let's begin with the users API. Presuming your app runs on localhost:3000 it should behave like this:
 
 ```
 curl -X POST http://localhost:3000/users
@@ -73,7 +73,7 @@ Anybody can create a user, this is the only endpoint that requires no security. 
 curl http://localhost:3000/user -H 'Authentication: Token ACTUAL_TOKEN_HERE'
 ```
 
-In case the token does not match the api must return a `401 Unauthorized` status. In case the user is found, it must return:
+In case the token does not match the API must return a `401 Unauthorized` status. In case the user is found, it must return:
 
 ```
 {
@@ -88,15 +88,15 @@ In case the token does not match the api must return a `401 Unauthorized` status
 If the user has multiple overlapping accesses at the time of the request, then `access_level` is the highest `level` of these accesses.
 
 
-### Accesses Api
+### Accesses API
 
-The next step is to create an api for accesses.
+The next step is to create an API for accesses.
 
 ```
 curl http://localhost:3000/accesses -H 'Authentication: Token ACTUAL_TOKEN_HERE'
 ```
 
-In the sucecss scenario this should return `200 OK` with:
+In the success scenario this should return `200 OK` with:
 
 ```
 {

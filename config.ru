@@ -1,6 +1,6 @@
-$:.push(File.dirname(__FILE__))
+# frozen_string_literal: true
 
-require 'environment'
-require 'app/main'
+require_relative 'environment'
+require_relative 'app/main'
 
-run Api::Main
+run API::Main

@@ -1,4 +1,6 @@
+# frozen_string_literal: true
+
 require 'app/accesses'
 
-describe Api::Accesses do
+RSpec.describe API::Accesses, type: :request do
 end
