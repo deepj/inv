@@ -18,3 +18,4 @@ rescue URI::InvalidURIError
 end
 
 ActiveRecord::Base.default_timezone = :utc
+ActiveModelSerializers.config.adapter = :json

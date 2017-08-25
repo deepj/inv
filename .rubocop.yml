@@ -5,6 +5,8 @@ AllCops:
   Include:
     - '**/Rakefile'
     - '**/config.ru'
+  Exclude:
+    - 'db/**/*'
 
 Documentation:
   Enabled: false

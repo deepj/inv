@@ -4,12 +4,13 @@ $LOAD_PATH.push(File.join(__dir__, '..'))
 
 ENV['RACK_ENV'] ||= 'test'
 
-require'environment'
+require 'environment'
 
-require 'pry'
-require 'database_cleaner'
+FactoryGirl.find_definitions
 
 RSpec.configure do |config|
+  config.include FactoryGirl::Syntax::Methods
+
   config.define_derived_metadata do |meta|
     meta[:aggregate_failures] = true
   end
@@ -19,6 +20,10 @@ RSpec.configure do |config|
     config.include Rack::Test::Methods, type: :request
     require_relative 'support/api_helpers'
     config.include APIHelpers, type: :request
+    require_relative 'support/matchers/be_error'
+    require_relative 'support/matchers/have_content_type'
+    require_relative 'support/matchers/have_status_code'
+    require_relative 'support/matchers/match_json_schema'
   end
 
   config.before(:suite) do

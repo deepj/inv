@@ -7,7 +7,7 @@ module APIHelpers
     API::Main
   end
 
-  def use_auth_header(token)
+  def authentication_token(token)
     header 'Authentication', "Token #{token}"
   end
 
