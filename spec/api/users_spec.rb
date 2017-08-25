@@ -8,7 +8,7 @@ RSpec.describe API::Users, type: :request do
 
     context 'when a user is authenticated using a valid token' do
       before do
-        authentication_token user.token
+        authentication_token!(user.token)
         get '/user'
       end
 

@@ -5,8 +5,8 @@ require_relative 'application_form'
 class UserForm < ApplicationForm
   attr_reader :user
 
-  def initialize(user: User.new)
-    @user = user
+  def initialize
+    @user = User.new
   end
 
   def call

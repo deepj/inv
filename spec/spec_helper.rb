@@ -21,6 +21,7 @@ RSpec.configure do |config|
     require_relative 'support/api_helpers'
     config.include APIHelpers, type: :request
     require_relative 'support/matchers/be_error'
+    require_relative 'support/matchers/have_body'
     require_relative 'support/matchers/have_content_type'
     require_relative 'support/matchers/have_status_code'
     require_relative 'support/matchers/match_json_schema'

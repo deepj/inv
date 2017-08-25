@@ -7,8 +7,12 @@ module APIHelpers
     API::Main
   end
 
-  def authentication_token(token)
+  def authentication_token!(token)
     header 'Authentication', "Token #{token}"
+  end
+
+  def javascript_content_type!
+    header 'Content-Type', 'application/json'
   end
 
   def json_response

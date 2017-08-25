@@ -2,7 +2,7 @@
 
 class ErrorAPIFormatter
   def self.call(message, _backtrace, _options, _env)
-    response = { error: { message: message } }
+    response = message.is_a?(Hash) ? message : { error: { message: message } }
     ::Grape::Json.dump(response)
   end
 end
