@@ -1,5 +1,6 @@
-FROM renra/ruby-node-postgres:ruby2.4.1-node8.1.2-postgres9.4.12
+FROM ruby:2.4.1-alpine
 
+RUN apk add --update --no-cache build-base tzdata libxml2-dev libxslt-dev postgresql-dev
 ENV dir /usr/src/app
 
 RUN mkdir -p ${dir}

@@ -8,16 +8,19 @@ services:
     volumes:
       - .:/usr/src/app
     environment:
-      - POSTGRES_PORT=5432
-      - POSTGRES_USER=postgres
-      - POSTGRES_HOST=db
-      - POSTGRES_PASSWORD=postgres
-    links:
+      POSTGRES_PORT: 5432
+      POSTGRES_USER: postgres
+      POSTGRES_HOST: db
+      POSTGRES_PASSWORD: postgres
+    depends_on:
       - db
 
   db:
-    image: postgres
+    image: postgres:9.6.4-alpine
+    expose:
+      - 5432
     ports:
       - 5432:5432
     environment:
-      - POSTGRES_PASSWORD=postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres

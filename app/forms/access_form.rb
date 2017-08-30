@@ -9,9 +9,9 @@ class AccessForm < ApplicationForm
 
   def initialize(access_params, user:)
     @access_params = access_params.is_a?(Hash) ? access_params : {}
-    @access = Access.new
-    @schema = AccessSchema
-    @user   = user
+    @access        = Access.new
+    @schema        = AccessSchema
+    @user          = user
   end
 
   def call

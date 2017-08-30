@@ -1,6 +1,6 @@
 # The Challenge of Accesses
 
-Hello prospective co-worker. Today you stand before the challenge of accesses. We have prepared a bare skeleton app that you can use to complete this challenge using **our** preferred set of tools ie. [activerecord](https://github.com/rails/rails/tree/master/activerecord), [grape](https://github.com/ruby-grape/grape) and [rspec](https://github.com/rspec/rspec). Should you decide for another set of tools, you are free to do so provided you stay within the Ruby world. However be warned that you are responsible for your tools. Their failure is your own.
+I have prepared a bare skeleton app that you can use to complete this challenge using **my** preferred set of tools ie. [activerecord](https://github.com/rails/rails/tree/master/activerecord), [grape](https://github.com/ruby-grape/grape) and [rspec](https://github.com/rspec/rspec). Should you decide for another set of tools, you are free to do so provided you stay within the Ruby world. However be warned that you are responsible for your tools. Their failure is your own.
 
 ## Workflow
 
@@ -13,7 +13,7 @@ docker-compose build
 docker-compose run api bin/init.sh
 ```
 
-You can start the skeleton app by running `docker-compose up` and tests can be run by `docker-compose run api rspec spec`. For a better workflow we recommend doing `docker-compose run api /bin/bash` and then running all the commands from inside docker.
+You can start the skeleton app by running `docker-compose up` and tests can be run by `docker-compose run api rspec spec`. For a better workflow I recommend doing `docker-compose run --service-ports api /bin/sh` and then running all the commands from inside docker.
 
 The app contains rake tasks for manipulating ActiveRecord migrations. You can create one like this:
 
@@ -30,11 +30,11 @@ docker-compose run api rake db:migrate RACK_ENV=test
 
 ### Tips
 
-Structuring and naming your commits well might help you succeed! We place great value on re-usability and readability of code. "First make it work, then make it right."
+Structuring and naming your commits well might help you succeed! I place great value on re-usability and readability of code. "First make it work, then make it right."
 
 During the development, please adhere to the industry standards to the best of your ability. Do not let your application crash with `500 Internal Server Error` statuses. Instead take care of all the edge cases and return appropriate status codes and response bodies. For example do not let your app crash if I use a non-existing id. Simply return a `404 Not Found` with an error message explaining what happened. All operations must be scoped to the current user of the API (if applicable). Make sure all the common use-cases are covered in specs. Make sure the tests are reasonably fast. Make sure the code is easy to read and speaks for itself.
 
-Note that the description below should give you a set of rules according to which the API should behave but it does not mention some details on purpose. Feel free to improve the concept if you know how and show some initiative. It will be appreciated. Most of all, we appreciate **common sense**.
+Note that the description below should give you a set of rules according to which the API should behave but it does not mention some details on purpose. Feel free to improve the concept if you know how and show some initiative. It will be appreciated. Most of all, I appreciate **common sense**.
 
 You will find some pre-filled boilerplate code in the `app` and `spec` directories. There's also some helper methods in `spec/support` which should make writing tests easier.
 
@@ -136,6 +136,5 @@ In case the access_id matches one of the accesses BELONGING TO THE USER WITH THE
 ### Testing
 
 **Good tests are a requirement of this challenge, not just a nice to have.** All features must be well covered including security.
-
 
 Good Luck and May the Source be with you!

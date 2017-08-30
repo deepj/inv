@@ -18,9 +18,6 @@ gem 'dry-types',       '0.11.1'
 gem 'dry-validation',  '0.11.0'
 gem 'dry-initializer', '1.4.1'
 
-# SSL
-gem 'rack-ssl-enforcer', '0.2.9'
-
 group :development do
   gem 'rubocop', '0.49.1', require: false
   gem 'rufo',    '0.1.0',  require: false

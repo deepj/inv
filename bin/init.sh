@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /bin/sh
 
 rake db:create
 rake db:create RACK_ENV=test
