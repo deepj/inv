@@ -27,9 +27,7 @@ RSpec.describe AccessQuery, type: :query do
   let(:access_7) { create(:access, user: user_4, starts_at: two_hours_ago, level: 88) }
   let(:access_8) { create(:access, user: user_4, starts_at: two_hours_ago, level: 77) }
 
-  let(:accesses) { [access_1, access_2, access_3, access_4, access_5, access_6, access_7, access_8] }
-
-  before { create_access! }
+  let!(:accesses) { [access_1, access_2, access_3, access_4, access_5, access_6, access_7, access_8] }
 
   it 'returns all accesses ordered by stars_at and level in descending order' do
     expect(result).to all(be_a(Access))
@@ -74,18 +72,11 @@ RSpec.describe AccessQuery, type: :query do
     end
 
     context 'when there is no access for the given user' do
-      let(:accesses) { [] }
+      let!(:accesses) { [] }
 
       it 'returns the empty result' do
         expect(result).to be_empty
       end
     end
-  end
-
-  private
-
-  def create_access!
-    accesses
-    nil
   end
 end

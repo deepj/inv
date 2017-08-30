@@ -22,6 +22,9 @@ module API
         error!('Unauthorized', 401) unless current_user
       end
 
+      # Extract token from headers (if available)
+      # Token e3bd14187e2f4695fe5d6eddb8e138877a032706004ed442e155709c0c7bd8bd
+      #   => e3bd14187e2f4695fe5d6eddb8e138877a032706004ed442e155709c0c7bd8bd
       def authentication_token
         headers['Authentication'].to_s[6..69]
       end

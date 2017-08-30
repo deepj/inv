@@ -12,7 +12,7 @@ RSpec.describe API::Users, type: :request do
         get '/user'
       end
 
-      it 'returns the corrent response' do
+      it 'returns the correct response' do
         expect(last_response).to have_status_code(200)
         expect(last_response).to have_content_type('application/json')
         expect(last_response).to match_json_schema('user')
@@ -39,7 +39,7 @@ RSpec.describe API::Users, type: :request do
 
     before { expect { request }.to change { User.count }.by(1) }
 
-    it 'returns the corrent response' do
+    it 'returns the correct response' do
       expect(last_response).to have_status_code(201)
       expect(last_response).to have_content_type('application/json')
       expect(last_response).to match_json_schema('user')
