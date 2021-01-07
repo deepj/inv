@@ -1,6 +1,6 @@
-FROM ruby:2.4.1-alpine
+FROM ruby:2.6-alpine
 
-RUN apk add --update --no-cache build-base tzdata libxml2-dev libxslt-dev postgresql-dev
+RUN apk add --update --no-cache build-base postgresql-dev
 ENV dir /usr/src/app
 
 RUN mkdir -p ${dir}

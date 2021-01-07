@@ -6,10 +6,10 @@ ENV['RACK_ENV'] ||= 'test'
 
 require 'environment'
 
-FactoryGirl.find_definitions
+FactoryBot.find_definitions
 
 RSpec.configure do |config|
-  config.include FactoryGirl::Syntax::Methods
+  config.include FactoryBot::Syntax::Methods
 
   config.define_derived_metadata do |meta|
     meta[:aggregate_failures] = true

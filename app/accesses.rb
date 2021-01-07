@@ -17,6 +17,7 @@ module API
 
       post do
         authenticate!
+
         access_form = AccessForm.new(params[:access], user: current_user)
         access_form.call
         error!({ error: { message: 'Unprocessable Entity', details: access_form.error_messages } }, 422) if access_form.fail?

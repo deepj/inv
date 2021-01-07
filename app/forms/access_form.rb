@@ -25,7 +25,7 @@ class AccessForm < ApplicationForm
 
   private
 
-  attr_reader :schema, :access_params, :user
+  attr_reader :schema, :user
   attr_accessor :access_params, :valid_params
 
   def validate!
